@@ -1,0 +1,33 @@
+{
+  "name": "trashdash-frontend",
+  "version": "1.0.0",
+  "description": "TrashDash Frontend Applications - Customer, Dasher, and Admin",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:customer": "cd apps/customer && npm run dev",
+    "dev:admin": "cd apps/admin && npm run dev",
+    "build:customer": "cd apps/customer && npm run build",
+    "build:admin": "cd apps/admin && npm run build",
+    "build:all": "npm run build:customer && npm run build:admin",
+    "build:netlify": "node scripts/build-netlify.js",
+    "test": "npm run test --workspaces",
+    "lint": "npm run lint --workspaces",
+    "install:all": "npm install && npm run install:workspaces",
+    "install:workspaces": "npm install --workspaces",
+    "setup": "npm install && npm run build:packages"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+} 

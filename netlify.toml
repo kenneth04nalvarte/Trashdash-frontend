@@ -1,0 +1,93 @@
+[build]
+  # Build command for the entire project
+  command = "npm run build:netlify"
+  
+  # Publish directory - we'll use a custom build script to organize outputs
+  publish = "dist"
+
+[build.environment]
+  # Set Node.js version
+  NODE_VERSION = "18"
+
+# Redirects for path-based routing
+[[redirects]]
+  # Customer app - main routes
+  from = "/customer/*"
+  to = "/customer/index.html"
+  status = 200
+
+[[redirects]]
+  # Admin app - admin routes
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+
+[[redirects]]
+  # Root redirect to customer app
+  from = "/"
+  to = "/customer/"
+  status = 302
+
+# Handle static assets for static export
+[[redirects]]
+  from = "/customer/_next/*"
+  to = "/customer/_next/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/admin/_next/*"
+  to = "/admin/_next/:splat"
+  status = 200
+
+# Handle static files
+[[redirects]]
+  from = "/customer/static/*"
+  to = "/customer/static/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/admin/static/*"
+  to = "/admin/static/:splat"
+  status = 200
+
+# Handle images and other assets
+[[redirects]]
+  from = "/customer/images/*"
+  to = "/customer/images/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/admin/images/*"
+  to = "/admin/images/:splat"
+  status = 200
+
+# API is handled directly by the backend URL
+# No redirects needed as apps connect directly to:
+# https://trashdash-backend-7188044708.us-central1.run.app/api
+
+# Handle 404s
+[[redirects]]
+  from = "/*"
+  to = "/customer/404.html"
+  status = 404
+
+# Headers for security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Cache static assets
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable" 
