@@ -3,7 +3,7 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ConfigProvider } from 'antd';
 import { useEffect, useState } from 'react';
-import { useAuthStore } from '@trashdash/api';
+import { useAuthStore } from '../../stores/authStore';
 
 // Create a client
 const queryClient = new QueryClient({

@@ -16,7 +16,7 @@ import {
   CreditCardOutlined,
 } from '@ant-design/icons';
 import { useRouter, usePathname } from 'next/navigation';
-import { useAuthStore } from '@trashdash/api';
+import { useAuthStore } from '../../stores/authStore';
 import Link from 'next/link';
 
 const { Header, Sider, Content } = Layout;
