@@ -11,6 +11,7 @@ interface AuthState {
   login: (credentials: LoginCredentials) => Promise<{ success: boolean; error?: string }>;
   logout: () => void;
   getProfile: () => Promise<{ success: boolean; error?: string }>;
+  refreshAuth: () => Promise<void>;
   clearError: () => void;
 }
 
@@ -150,6 +151,24 @@ const useAuthStore = create<AuthState>((set, get) => ({
         error: errorMessage,
       });
       return { success: false, error: errorMessage };
+    }
+  },
+
+  refreshAuth: async () => {
+    const token = localStorage.getItem('admin_token');
+    if (token && !get().user) {
+      try {
+        await get().getProfile();
+      } catch (error) {
+        console.error('Failed to refresh admin auth:', error);
+        // If refresh fails, clear the token
+        localStorage.removeItem('admin_token');
+        set({
+          user: null,
+          token: null,
+          isAuthenticated: false,
+        });
+      }
     }
   },
 

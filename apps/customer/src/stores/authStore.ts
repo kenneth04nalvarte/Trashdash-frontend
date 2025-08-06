@@ -12,6 +12,7 @@ interface AuthState {
   register: (userData: RegisterData) => Promise<{ success: boolean; error?: string }>;
   logout: () => void;
   getProfile: () => Promise<{ success: boolean; error?: string }>;
+  refreshAuth: () => Promise<void>;
   clearError: () => void;
 }
 
@@ -199,6 +200,24 @@ const useAuthStore = create<AuthState>((set, get) => ({
         error: errorMessage,
       });
       return { success: false, error: errorMessage };
+    }
+  },
+
+  refreshAuth: async () => {
+    const token = localStorage.getItem('token');
+    if (token && !get().user) {
+      try {
+        await get().getProfile();
+      } catch (error) {
+        console.error('Failed to refresh auth:', error);
+        // If refresh fails, clear the token
+        localStorage.removeItem('token');
+        set({
+          user: null,
+          token: null,
+          isAuthenticated: false,
+        });
+      }
     }
   },
 
