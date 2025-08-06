@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { Card, Form, Input, Button, Alert, Typography, Space, Divider } from 'antd';
-import { UserOutlined, LockOutlined, Truck, MapPin, Clock, DollarSign } from 'lucide-react';
+import { Truck, MapPin, Clock, DollarSign } from 'lucide-react';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useAuthStore } from '../stores/authStore';
 import { useRouter } from 'next/navigation';
 
