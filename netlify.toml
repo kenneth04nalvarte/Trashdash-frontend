@@ -28,6 +28,18 @@
   to = "/customer/"
   status = 302
 
+# Handle SPA routing for customer app
+[[redirects]]
+  from = "/customer"
+  to = "/customer/"
+  status = 302
+
+# Handle SPA routing for admin app
+[[redirects]]
+  from = "/admin"
+  to = "/admin/"
+  status = 302
+
 # Handle static assets for static export
 [[redirects]]
   from = "/customer/_next/*"
