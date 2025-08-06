@@ -300,7 +300,11 @@ export default function ReportsPage() {
                 </Select>
                 <RangePicker
                   value={dateRange}
-                  onChange={(dates) => dates && setDateRange(dates)}
+                  onChange={(dates) => {
+                    if (dates && Array.isArray(dates) && dates.length === 2) {
+                      setDateRange(dates as [dayjs.Dayjs, dayjs.Dayjs]);
+                    }
+                  }}
                 />
                 <Button 
                   icon={<DownloadOutlined />}
