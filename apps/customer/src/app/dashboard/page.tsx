@@ -12,7 +12,7 @@ import {
   DollarOutlined,
   LogoutOutlined
 } from '@ant-design/icons';
-import useAuthStore from '../../stores/authStore';
+import { useAuthStore } from '../../stores/authStore';
 import api, { API_ENDPOINTS } from '../../services/api';
 
 interface Task {

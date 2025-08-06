@@ -35,7 +35,7 @@ import {
   ClockCircleOutlined,
   CheckCircleOutlined
 } from '@ant-design/icons';
-import useAuthStore from '../../stores/authStore';
+import { useAuthStore } from '../../stores/authStore';
 import api, { API_ENDPOINTS } from '../../services/api';
 import AdminLayout from '../../components/AdminLayout';
 

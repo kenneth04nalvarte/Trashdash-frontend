@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Form, Input, Button, Card, message } from 'antd';
 import { UserOutlined, MailOutlined, LockOutlined, PhoneOutlined } from '@ant-design/icons';
-import useAuthStore from '../../../stores/authStore';
+import { useAuthStore } from '../../../stores/authStore';
 
 interface RegisterFormData {
   firstName: string;

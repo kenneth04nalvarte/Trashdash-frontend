@@ -24,7 +24,7 @@ import {
   MenuUnfoldOutlined,
   SafetyOutlined
 } from '@ant-design/icons';
-import useAuthStore from '../stores/authStore';
+import { useAuthStore } from '../stores/authStore';
 
 const { Header, Sider, Content } = Layout;
 

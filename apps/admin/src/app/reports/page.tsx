@@ -43,7 +43,7 @@ import {
   AreaChart,
   Area
 } from 'recharts';
-import useAuthStore from '../../stores/authStore';
+import { useAuthStore } from '../../stores/authStore';
 import api, { API_ENDPOINTS } from '../../services/api';
 import dayjs from 'dayjs';
 import AdminLayout from '../../components/AdminLayout';

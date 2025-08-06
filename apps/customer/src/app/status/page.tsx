@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Card, Button, List, Tag, Space, message } from 'antd';
 import { CheckCircleOutlined, CloseCircleOutlined, LoadingOutlined } from '@ant-design/icons';
 import api, { API_ENDPOINTS } from '../../services/api';
-import useAuthStore from '../../stores/authStore';
+import { useAuthStore } from '../../stores/authStore';
 
 interface StatusItem {
   name: string;

@@ -36,7 +36,7 @@ import {
   BellOutlined
 } from '@ant-design/icons';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
-import useAuthStore from '../../stores/authStore';
+import { useAuthStore } from '../../stores/authStore';
 import api, { API_ENDPOINTS } from '../../services/api';
 import AdminLayout from '../../components/AdminLayout';
 
