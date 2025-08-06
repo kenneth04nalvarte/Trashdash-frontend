@@ -23,6 +23,12 @@
   status = 200
 
 [[redirects]]
+  # Dasher app - dasher routes
+  from = "/dasher/*"
+  to = "/dasher/index.html"
+  status = 200
+
+[[redirects]]
   # Root redirect to customer app
   from = "/"
   to = "/customer/"
@@ -40,6 +46,12 @@
   to = "/admin/"
   status = 302
 
+# Handle SPA routing for dasher app
+[[redirects]]
+  from = "/dasher"
+  to = "/dasher/"
+  status = 302
+
 # Handle static assets for static export
 [[redirects]]
   from = "/customer/_next/*"
@@ -49,6 +61,11 @@
 [[redirects]]
   from = "/admin/_next/*"
   to = "/admin/_next/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/dasher/_next/*"
+  to = "/dasher/_next/:splat"
   status = 200
 
 # Handle static files
@@ -62,6 +79,11 @@
   to = "/admin/static/:splat"
   status = 200
 
+[[redirects]]
+  from = "/dasher/static/*"
+  to = "/dasher/static/:splat"
+  status = 200
+
 # Handle images and other assets
 [[redirects]]
   from = "/customer/images/*"
@@ -71,6 +93,11 @@
 [[redirects]]
   from = "/admin/images/*"
   to = "/admin/images/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/dasher/images/*"
+  to = "/dasher/images/:splat"
   status = 200
 
 # API is handled directly by the backend URL

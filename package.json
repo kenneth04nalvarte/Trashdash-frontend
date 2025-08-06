@@ -10,9 +10,11 @@
   "scripts": {
     "dev:customer": "cd apps/customer && npm run dev",
     "dev:admin": "cd apps/admin && npm run dev",
+    "dev:dasher": "cd apps/dasher && npm run dev",
     "build:customer": "cd apps/customer && npm run build",
     "build:admin": "cd apps/admin && npm run build",
-    "build:all": "npm run build:customer && npm run build:admin",
+    "build:dasher": "cd apps/dasher && npm run build",
+    "build:all": "npm run build:customer && npm run build:admin && npm run build:dasher",
     "build:netlify": "node scripts/build-netlify.js",
     "test": "npm run test --workspaces",
     "lint": "npm run lint --workspaces",

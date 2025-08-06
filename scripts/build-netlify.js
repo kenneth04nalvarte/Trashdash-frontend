@@ -28,6 +28,13 @@ try {
     stdio: 'inherit' 
   });
 
+  // Build dasher app
+  console.log('🚚 Building dasher app...');
+  execSync('npm run build:dasher', { 
+    cwd: path.join(__dirname, '..'), 
+    stdio: 'inherit' 
+  });
+
   // Copy customer build to dist/customer
   const customerBuildDir = path.join(__dirname, '..', 'apps', 'customer', 'out');
   const customerDistDir = path.join(distDir, 'customer');
@@ -46,6 +53,15 @@ try {
     copyDirectory(adminBuildDir, adminDistDir);
   }
 
+  // Copy dasher build to dist/dasher
+  const dasherBuildDir = path.join(__dirname, '..', 'apps', 'dasher', 'out');
+  const dasherDistDir = path.join(distDir, 'dasher');
+  
+  if (fs.existsSync(dasherBuildDir)) {
+    fs.mkdirSync(dasherDistDir, { recursive: true });
+    copyDirectory(dasherBuildDir, dasherDistDir);
+  }
+
   // Note: Next.js static export creates its own index.html files
   // No need to create custom ones
 
@@ -53,6 +69,7 @@ try {
   console.log('📁 Output directory: dist/');
   console.log('🌐 Customer app: /customer/');
   console.log('👨‍💼 Admin app: /admin/');
+  console.log('🚚 Dasher app: /dasher/');
 
 } catch (error) {
   console.error('❌ Build failed:', error.message);
