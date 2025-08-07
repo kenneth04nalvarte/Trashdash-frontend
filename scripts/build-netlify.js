@@ -62,11 +62,17 @@ try {
     copyDirectory(dasherBuildDir, dasherDistDir);
   }
 
-  // Note: Next.js static export creates its own index.html files
-  // No need to create custom ones
+  // Copy homepage to dist root
+  const homepagePath = path.join(__dirname, '..', 'index.html');
+  const homepageDest = path.join(distDir, 'index.html');
+  if (fs.existsSync(homepagePath)) {
+    fs.copyFileSync(homepagePath, homepageDest);
+    console.log('🏠 Homepage copied to dist/');
+  }
 
   console.log('✅ Build completed successfully!');
   console.log('📁 Output directory: dist/');
+  console.log('🏠 Homepage: /');
   console.log('🌐 Customer app: /customer/');
   console.log('👨‍💼 Admin app: /admin/');
   console.log('🚚 Dasher app: /dasher/');

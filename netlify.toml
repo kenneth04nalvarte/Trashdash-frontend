@@ -28,11 +28,8 @@
   to = "/dasher/index.html"
   status = 200
 
-[[redirects]]
-  # Root redirect to customer app
-  from = "/"
-  to = "/customer/"
-  status = 302
+# Root serves the homepage (no redirect needed)
+# The index.html file in the root will be served automatically
 
 # Handle SPA routing for customer app
 [[redirects]]
